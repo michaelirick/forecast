@@ -52,6 +52,7 @@ group :test do
   gem 'webdrivers'
   gem 'rspec-rails', '~> 5.0.0'
   gem 'pry', '~> 0.13.1'
+  gem 'simplecov'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
