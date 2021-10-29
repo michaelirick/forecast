@@ -1,24 +1,26 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Get coords from address: https://geocoding.geo.census.gov/geocoder/locations/address?street=&city=&state=&zip=38053&benchmark=2020&format=json
 
-Things you may want to cover:
+get api details for https://api.weather.gov/points/39.7456,-97.0892:
 
-* Ruby version
+    * https://api.weather.gov/gridpoints/TOP/31,80/forecast
+    * hourly forecast: https://api.weather.gov/gridpoints/TOP/31,80/forecast/hourly
 
-* System dependencies
+```
+Location
+  zip_code:string
+  zone_coordinates:string
+  latitude:string
+  longitude:string
 
-* Configuration
+Forecast
+  location_id:integer
+  hourly:json
+  extended:json
+```
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+LocationService
+ForecastService
+HourlyForecastService
+ExtendedForecastService
