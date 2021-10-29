@@ -2,18 +2,20 @@ require 'pry'
 module Services
   class LocationService < Services::Base
     def run
-      uri = URI("https://geocoding.geo.census.gov/geocoder/locations/address")
-      @params[:benchmark] = 2020
-      @params[:format] = :json
-      # params.to_hash.slice(
-      #   :street, :city, :state, :zip, :benchmark, :format
-      # ).reduce(:merge)
-      uri.query = URI.encode_www_form(params.to_hash)
+      location = Location.find_by zip_code: @params[:zip]
 
-      res = Net::HTTP.get_response(uri)
-      throw :error unless res.is_a?(Net::HTTPSuccess)
+      location = fetch_location unless location
       
-      result = JSON.parse(res.body)['result']
+      location
+    end
+
+    def fetch_location
+      latlong = Services::LatLongService.new(params).run
+      zone = Services::ZoneService.new(latlong).run
+
+      Location.create(
+        latlong.merge(zone_coordinates: zone, zip_code: @params[:zip])
+      )
     end
   end
 end
