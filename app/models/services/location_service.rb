@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 require 'pry'
 module Services
   class LocationService < Services::Base
     def run
       location = Location.find_by zip_code: @params[:zip]
 
-      location = fetch_location unless location
-      
+      location ||= fetch_location
+
       location
     end
 

@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 module Services
   class ForecastService < Services::Base
     def run
       location = fetch_location
-# binding.pry
+      # binding.pry
       return cached_forecast(location) unless location.forecast_expired?
-      
+
       new_forecast location
     end
 
@@ -34,7 +36,7 @@ module Services
         hourly: hourly,
         cached: false,
         updated_at: forecast.updated_at
-      }      
+      }
     end
   end
 end

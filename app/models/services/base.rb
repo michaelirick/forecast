@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Services
   class Base
     attr_accessor :params
@@ -6,7 +8,6 @@ module Services
       @params = params
     end
 
-    def run
-    end
+    def run; end
   end
 end

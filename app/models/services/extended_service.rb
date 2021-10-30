@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Services
   class ExtendedService < Services::Base
     def run
