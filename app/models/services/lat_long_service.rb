@@ -8,7 +8,11 @@ module Services
       uri.query = URI.encode_www_form(params.to_hash)
 
       res = Net::HTTP.get_response(uri)
-      throw :error unless res.is_a?(Net::HTTPSuccess)
+      
+      unless res.is_a?(Net::HTTPSuccess)
+        error = JSON.parse(res.body)
+        throw error
+      end
       
       result = JSON.parse(res.body)['result']     
       longitude, latitude = result['addressMatches'].first['coordinates'].slice('x', 'y').values
