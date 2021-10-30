@@ -1,0 +1,11 @@
+<%= form_with url: '/forecast' do |form| %>
+  <% fields = [:street, :city, :state, :zip] %>
+  <% fields.each do |field| %>
+    <fieldset>
+      <%= form.label field, field.to_s.titleize %>
+      <%= form.text_field field, value: @params[field] %>
+    </fieldset>
+  <% end %>
+
+  <%= form.submit "Search" %>
+<% end %>

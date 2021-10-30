@@ -1,2 +1,60 @@
-<h1>Forecast#forecast</h1>
-<p>Find me in app/views/forecast/forecast.html.erb</p>
+<h1>Forecast</h1>
+
+<%= render partial: 'form' %>
+
+<% current = @hourly['properties']['periods'][0] %>
+
+<h2>Current Conditions</h2>
+<ul>
+  <li>Temperature (F): <%= current['temperature'] %></li>
+  <li>Wind Speed: <%= current['windSpeed'] %> <%= current['windDirection'] %></li>
+  <li><%= @cached ? 'Loaded from cache' : 'Served fresh' %></li>
+  <li>Last update: <%= @updated_at %></li>
+</ul>
+
+<h2>Hourly Forecast</h2>
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>Temp.</th>
+      <th>Wind Speed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @hourly['properties']['periods'][1..12].each do |period| %>
+      <tr>
+        <td><%= period['startTime'] %></td>
+        <td><img src="<%= period['icon'] %>"><td>
+        <td><%= period['temperature'] %> F</td>
+        <td><%= period['windSpeed'] %> <%= period['windDirection'] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<h2>Extended Forecast</h2>
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>Temp.</th>
+      <th>Wind Speed</th>
+      <th>Forecast</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @extended['properties']['periods'][1..24].each do |period| %>
+      <tr>
+        <td><%= period['startTime'] %></td>
+        <td><img src="<%= period['icon'] %>"><td>
+        <td><%= period['temperature'] %> F</td>
+        <td><%= period['windSpeed'] %> <%= period['windDirection'] %></td>
+        <td><%= period['shortForecast'] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

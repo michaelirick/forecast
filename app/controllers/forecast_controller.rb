@@ -1,11 +1,13 @@
 class ForecastController < ApplicationController
   def index
+    @params = forecast_params
   end
 
   def forecast
-    @location, @hourly, @extended, @cached = Services::ForecastService.new(forecast_params)
+    @params = forecast_params
+    @location, @hourly, @extended, @cached, @updated_at = Services::ForecastService.new(forecast_params)
       .run
-      .slice(:location, :hourly, :extended, :cached)
+      .slice(:location, :hourly, :extended, :cached, :updated_at)
       .values
   end
 
