@@ -1,26 +1,34 @@
 # README
 
-Get coords from address: https://geocoding.geo.census.gov/geocoder/locations/address?street=&city=&state=&zip=38053&benchmark=2020&format=json
+This is a simple Rails app that gets current weather conditions as well as hourly and extended forecast by the supplied address. It uses weather.gov APIs and will cache conditions by ZIP code for 30 minutes.
 
-get api details for https://api.weather.gov/points/39.7456,-97.0892:
+## Getting Started
 
-    * https://api.weather.gov/gridpoints/TOP/31,80/forecast
-    * hourly forecast: https://api.weather.gov/gridpoints/TOP/31,80/forecast/hourly
+Clone the repository and install gems with bundler:
 
 ```
-Location
-  zip_code:string
-  zone_coordinates:string
-  latitude:string
-  longitude:string
-
-Forecast
-  location_id:integer
-  hourly:json
-  extended:json
+git clone ssh://git@github.com/michaelirick/forecast
+cd forecast
+bundle install
 ```
 
-LocationService
-ForecastService
-HourlyForecastService
-ExtendedForecastService
+Configure your database `config/database.yml`
+
+```
+rails db:{create, migrate}
+```
+
+Run yarn, then launch the server
+
+```
+yarn
+rails s
+```
+
+## Tests
+
+Run test suite with:
+
+```
+rspec
+```
