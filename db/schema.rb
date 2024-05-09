@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_29_030734) do
-
+ActiveRecord::Schema[7.1].define(version: 2024_05_09_044422) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,8 +18,8 @@ ActiveRecord::Schema.define(version: 2021_10_29_030734) do
     t.integer "location_id"
     t.jsonb "hourly"
     t.jsonb "extended"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "locations", force: :cascade do |t|
@@ -28,8 +27,8 @@ ActiveRecord::Schema.define(version: 2021_10_29_030734) do
     t.string "zone_coordinates"
     t.string "latitude"
     t.string "longitude"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
