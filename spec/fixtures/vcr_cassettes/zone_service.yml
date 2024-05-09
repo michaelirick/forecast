@@ -1,0 +1,152 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.weather.gov/points/35.155,-90.052
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.weather.gov
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.20.1
+      Content-Type:
+      - application/geo+json
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - X-Correlation-Id, X-Request-Id, X-Server-Id
+      X-Request-Id:
+      - 1386da56-2f35-4575-86c5-35c39d0a2026
+      X-Correlation-Id:
+      - bdec0e4
+      X-Server-Id:
+      - vm-bldr-nids-apiapp4.ncep.noaa.gov
+      Vary:
+      - Accept,Feature-Flags,Accept-Language
+      - Accept-Encoding
+      Cache-Control:
+      - public, max-age=83594, s-maxage=120
+      Expires:
+      - Thu, 09 May 2024 23:08:44 GMT
+      Date:
+      - Wed, 08 May 2024 23:55:30 GMT
+      Content-Length:
+      - '3095'
+      Connection:
+      - keep-alive
+      X-Edge-Request-Id:
+      - 7c51a696
+      Strict-Transport-Security:
+      - max-age=31536000 ; includeSubDomains ; preload
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+            "@context": [
+                "https://geojson.org/geojson-ld/geojson-context.jsonld",
+                {
+                    "@version": "1.1",
+                    "wx": "https://api.weather.gov/ontology#",
+                    "s": "https://schema.org/",
+                    "geo": "http://www.opengis.net/ont/geosparql#",
+                    "unit": "http://codes.wmo.int/common/unit/",
+                    "@vocab": "https://api.weather.gov/ontology#",
+                    "geometry": {
+                        "@id": "s:GeoCoordinates",
+                        "@type": "geo:wktLiteral"
+                    },
+                    "city": "s:addressLocality",
+                    "state": "s:addressRegion",
+                    "distance": {
+                        "@id": "s:Distance",
+                        "@type": "s:QuantitativeValue"
+                    },
+                    "bearing": {
+                        "@type": "s:QuantitativeValue"
+                    },
+                    "value": {
+                        "@id": "s:value"
+                    },
+                    "unitCode": {
+                        "@id": "s:unitCode",
+                        "@type": "@id"
+                    },
+                    "forecastOffice": {
+                        "@type": "@id"
+                    },
+                    "forecastGridData": {
+                        "@type": "@id"
+                    },
+                    "publicZone": {
+                        "@type": "@id"
+                    },
+                    "county": {
+                        "@type": "@id"
+                    }
+                }
+            ],
+            "id": "https://api.weather.gov/points/35.155,-90.052",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.052000000000007,
+                    35.155000000000001
+                ]
+            },
+            "properties": {
+                "@id": "https://api.weather.gov/points/35.155,-90.052",
+                "@type": "wx:Point",
+                "cwa": "MEG",
+                "forecastOffice": "https://api.weather.gov/offices/MEG",
+                "gridId": "MEG",
+                "gridX": 42,
+                "gridY": 67,
+                "forecast": "https://api.weather.gov/gridpoints/MEG/42,67/forecast",
+                "forecastHourly": "https://api.weather.gov/gridpoints/MEG/42,67/forecast/hourly",
+                "forecastGridData": "https://api.weather.gov/gridpoints/MEG/42,67",
+                "observationStations": "https://api.weather.gov/gridpoints/MEG/42,67/stations",
+                "relativeLocation": {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            -89.977402999999995,
+                            35.102828000000002
+                        ]
+                    },
+                    "properties": {
+                        "city": "Memphis",
+                        "state": "TN",
+                        "distance": {
+                            "unitCode": "wmoUnit:m",
+                            "value": 8926.2159874071003
+                        },
+                        "bearing": {
+                            "unitCode": "wmoUnit:degree_(angle)",
+                            "value": 310
+                        }
+                    }
+                },
+                "forecastZone": "https://api.weather.gov/zones/forecast/TNZ088",
+                "county": "https://api.weather.gov/zones/county/TNC157",
+                "fireWeatherZone": "https://api.weather.gov/zones/fire/TNZ088",
+                "timeZone": "America/Chicago",
+                "radarStation": "KNQA"
+            }
+        }
+  recorded_at: Wed, 08 May 2024 23:55:30 GMT
+recorded_with: VCR 6.2.0

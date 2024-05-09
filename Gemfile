@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.2'
+ruby '3.2.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4'
@@ -54,8 +54,11 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
   gem 'rspec-rails', '~> 5.0.0'
-  gem 'pry', '~> 0.13.1'
+  # gem 'pry', '~> 0.13.1'
   gem 'simplecov'
+  gem 'vcr'
+  gem 'webmock'
+  gem 'pry', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -20,8 +20,8 @@ module Services
       longitude, latitude = result['addressMatches'].first['coordinates'].slice('x', 'y').values
 
       {
-        longitude: longitude,
-        latitude: latitude
+        longitude: longitude.round(5),
+        latitude: latitude.round(5)
       }
     end
   end

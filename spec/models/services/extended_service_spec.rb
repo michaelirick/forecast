@@ -6,6 +6,10 @@ RSpec.describe Services::ExtendedService, type: :model do
   let(:service) { Services::ExtendedService.new(location: location) }
 
   it 'returns a forecast' do
-    expect(service.run).to_not eql nil
+    response = VCR.use_cassette('extended_service') do
+      service.run
+    end
+
+    expect(response).to be_a Hash
   end
 end

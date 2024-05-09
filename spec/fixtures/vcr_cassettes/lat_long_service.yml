@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://geocoding.geo.census.gov/geocoder/locations/address?benchmark=2020&city=Memphis&format=json&state=TN&street=1%20Bass%20Pro%20Drive&zip=38105
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - geocoding.geo.census.gov
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Date:
+      - Wed, 08 May 2024 23:55:30 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '681'
+      Connection:
+      - keep-alive
+      X-Frame-Options:
+      - DENY
+      Cache-Control:
+      - private, no-store
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1;mode=block
+      Vary:
+      - Origin
+      Set-Cookie:
+      - TS0193e6a1=01283c52a44bc40e7e99ba3390714eab6543a6a446e49703e7b408e9cadbbfb283004154e07dbe530a6a6d3e9edab8143237b0ff1f;
+        Path=/; Domain=.geocoding.geo.census.gov;
+    body:
+      encoding: UTF-8
+      string: '{"result":{"input":{"address":{"zip":"38105","city":"Memphis","street":"1
+        Bass Pro Drive","state":"TN"},"benchmark":{"isDefault":false,"benchmarkDescription":"Public
+        Address Ranges - Census 2020 Benchmark","id":"2020","benchmarkName":"Public_AR_Census2020"}},"addressMatches":[{"tigerLine":{"side":"R","tigerLineId":"643423323"},"coordinates":{"x":-90.05238953465937,"y":35.154548211647445},"addressComponents":{"zip":"38105","streetName":"BASS
+        PRO","preType":"","city":"MEMPHIS","preDirection":"","suffixDirection":"","fromAddress":"99","state":"TN","suffixType":"DR","toAddress":"1","suffixQualifier":"","preQualifier":""},"matchedAddress":"1
+        BASS PRO DR, MEMPHIS, TN, 38105"}]}}'
+  recorded_at: Wed, 08 May 2024 23:55:30 GMT
+recorded_with: VCR 6.2.0

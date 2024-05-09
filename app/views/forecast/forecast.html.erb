@@ -26,7 +26,7 @@
     <% @hourly['properties']['periods'][1..12].each do |period| %>
       <tr>
         <td><%= period['startTime'] %></td>
-        <td><img src="<%= period['icon'] %>"><td>
+        <td><img src="<%= (period['icon'] || '').split(',').first %>"><td>
         <td><%= period['temperature'] %> F</td>
         <td><%= period['windSpeed'] %> <%= period['windDirection'] %></td>
       </tr>
@@ -50,7 +50,7 @@
     <% @extended['properties']['periods'][1..24].each do |period| %>
       <tr>
         <td><%= period['startTime'] %></td>
-        <td><img src="<%= period['icon'] %>"><td>
+        <td><img src="<%= (period['icon'] || '').split(',').first %>"><td>
         <td><%= period['temperature'] %> F</td>
         <td><%= period['windSpeed'] %> <%= period['windDirection'] %></td>
         <td><%= period['shortForecast'] %></td>

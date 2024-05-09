@@ -6,17 +6,30 @@ RSpec.describe Services::ForecastService, type: :model do
   let(:location_attributes) {{zip_code: '38105', zone_coordinates: '41,66', :latitude=>35.154575, :longitude=>-90.05245}}
 
   it 'returns a forecast' do
-    expect(service.run).to_not eql nil
+    response = VCR.use_cassette('forecast_service') do
+      service.run
+    end
+    expect(response).to be_a Hash
   end
 
   it 'returns new forecast if more than 30 minutes old' do
-    forecast = service.run
+    forecast = VCR.use_cassette('forecast_service') do
+      service.run
+    end
     Location.connection.execute("UPDATE location_forecasts SET updated_at = '#{31.minutes.ago}' WHERE id = #{forecast[:location].forecast.id}")
-    expect(service.run[:cached]).to eql false
+    response = VCR.use_cassette('forecast_service') do
+      service.run
+    end
+    expect(response[:cached]).to eql false
   end
 
   it 'returns cached forecast if less than 30 minutes old' do
-    service.run
-    expect(service.run[:cached]).to eql true
+    forecast = VCR.use_cassette('forecast_service') do
+      service.run
+    end
+    response = VCR.use_cassette('forecast_service') do
+      service.run
+    end
+    expect(response[:cached]).to eql true
   end  
 end
