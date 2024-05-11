@@ -20,7 +20,7 @@ const ForecastRow = ({period}) => {
       <Table.Cell>
         <Image src={period.icon.split(',')[0]} size="mini" />
       </Table.Cell>
-      <Table.Cell>{period.temperature}</Table.Cell>
+      <Table.Cell>{period.temperature}° {period.temperatureUnit}</Table.Cell>
       <Table.Cell>{period.windSpeed} {period.windDirection}</Table.Cell>
       <Table.Cell>{description()}</Table.Cell>    
     </>

@@ -35,7 +35,7 @@ const App = () => {
           <Header as="h2">Current Conditions</Header>
           <List>
             <List.Item>
-              <strong>Temperature (F):</strong> {weather.current.temperature}
+              <strong>Temperature ({weather.current.temperatureUnit}):</strong> {weather.current.temperature}°
             </List.Item>
             <List.Item>
               <strong>Wind Speed:</strong> {weather.current.windSpeed} {weather.current.windDirection}
