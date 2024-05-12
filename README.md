@@ -4,30 +4,36 @@ This is a simple Rails app that gets current weather conditions as well as hourl
 
 ## Getting Started with Docker
 
-1. Clone the repository
+1. Install [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 
-2. Build the Docker image
+2. Clone the repository
+
+```bash
+git clone ssh://git@github.com/michaelirick/forecast
+```
+
+3. Build the Docker image
 
 ```bash
 docker-compose build
 ```
 
-3. Create the database
+4. Create the database
 
 ```bash
 docker-compose run forecast rake db:create
 ```
 
-4. Run the migrations
+5. Run the migrations
 
 ```bash
 docker-compose run forecast rake db:migrate
 ```
 
-5. Start the server
+6. Start the server
 
 ```bash
 docker-compose up
 ```
 
-6. Visit the site at [http://localhost:8010](http://localhost:8010)
+7. Visit the site at [http://localhost:8010](http://localhost:8010)
