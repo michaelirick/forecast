@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+
+  postgres:
+    image: postgres:14.2
+    environment:
+      POSTGRES_USER: forecast
+      POSTGRES_PASSWORD: test_db_password
+    ports: 
+      - '5432:5432'
+    volumes:
+      - forecast-postgres:/var/lib/postgresql/data
+
+  forecast:
+    command: bash -c "rm -f tmp/pids/server.pid && cd /opt/app && bundle exec foreman start -f Procfile.dev"
+    depends_on:
+      - postgres
+    build:
+      context: .
+      args:
+        NODE_MAJOR: '16.17.0'
+        YARN_VERSION: '1.22.19'
+    links:
+      - postgres
+    ports:
+      - '8010:8010'
+    env_file:
+      - .env
+    working_dir: /opt/app
+
+
+
+volumes:
+  forecast-postgres:

@@ -1,0 +1,6 @@
+.git
+.dockerignore
+.env
+forecast/node_modules/
+forecast/vendor/bundle/
+forecast/tmp/

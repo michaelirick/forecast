@@ -1,34 +1,33 @@
 # README
 
-This is a simple Rails app that gets current weather conditions as well as hourly and extended forecast by the supplied address. It uses weather.gov APIs and will cache conditions by ZIP code for 30 minutes.
+This is a simple Rails app that gets current weather conditions as well as hourly and extended forecast by the supplied address. It uses weather.gov APIs and will cache conditions by ZIP code for 30 minutes. Development is done with Docker.
 
-## Getting Started
+## Getting Started with Docker
 
-Clone the repository and install gems with bundler:
+1. Clone the repository
 
-```
-git clone ssh://git@github.com/michaelirick/forecast
-cd forecast
-bundle install
-```
+2. Build the Docker image
 
-Configure your database `config/database.yml`
-
-```
-rails db:{create, migrate}
+```bash
+docker-compose build
 ```
 
-Run yarn, then launch the server
+3. Create the database
 
-```
-yarn
-rails s
+```bash
+docker-compose run forecast rake db:create
 ```
 
-## Tests
+4. Run the migrations
 
-Run test suite with:
+```bash
+docker-compose run forecast rake db:migrate
+```
 
+5. Start the server
+
+```bash
+docker-compose up
 ```
-rspec
-```
+
+6. Visit the site at [http://localhost:8010](http://localhost:8010)
