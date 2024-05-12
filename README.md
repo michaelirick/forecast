@@ -10,6 +10,7 @@ This is a simple Rails app that gets current weather conditions as well as hourl
 
 ```bash
 git clone ssh://git@github.com/michaelirick/forecast
+cd forecast
 ```
 
 3. Build the Docker image
