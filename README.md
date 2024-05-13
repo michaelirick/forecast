@@ -38,3 +38,14 @@ docker-compose up
 ```
 
 7. Visit the site at [http://localhost:8010](http://localhost:8010)
+
+8. Run the tests
+
+```bash
+docker-compose run -e "RAILS_ENV=test" forecast rails db:create db:migrate
+docker-compose run -e "RAILS_ENV=test" forecast rspec
+```
+
+## About
+
+I originally started on this application in 2021 when applying to Apple. I was passed on the position, but now have another opportunity to work with them. For my second attempt, I decided to revisit this project and make it better with some of the techniques and technologies I have since learned. I have added more tests to the cover the acceptance criteria with VCR mocking of the external API, improved the UI with React and Semantic-UI, and added Docker for development.

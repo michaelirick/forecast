@@ -11,4 +11,20 @@ RSpec.describe Services::LatLongService, type: :model do
 
     expect(response).to eql lat_long
   end
+
+  it 'returns latitude from address' do
+    response = VCR.use_cassette('lat_long_service') do
+      Services::LatLongService.new(params).run
+    end
+
+    expect(response[:latitude]).to eql 35.15455
+  end
+
+  it 'returns longitude from address' do
+    response = VCR.use_cassette('lat_long_service') do
+      Services::LatLongService.new(params).run
+    end
+
+    expect(response[:longitude]).to eql -90.05239
+  end
 end

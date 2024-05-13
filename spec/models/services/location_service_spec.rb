@@ -30,4 +30,31 @@ RSpec.describe Services::LocationService, type: :model do
     end
     expect(response).to eql Location.find_by(location_attributes)
   end
+
+  it 'returns zone from address params' do
+    response = VCR.use_cassette('zone_service') do
+      VCR.use_cassette('lat_long_service') do
+        service.run
+      end
+    end
+    expect(response.zone_coordinates).to eql '42,67'
+  end
+
+  it 'returns latitude from address params' do
+    response = VCR.use_cassette('zone_service') do
+      VCR.use_cassette('lat_long_service') do
+        service.run
+      end
+    end
+    expect(response.latitude).to eql '35.15455'
+  end
+
+  it 'returns longitude from address params' do
+    response = VCR.use_cassette('zone_service') do
+      VCR.use_cassette('lat_long_service') do
+        service.run
+      end
+    end
+    expect(response.longitude).to eql '-90.05239'
+  end
 end

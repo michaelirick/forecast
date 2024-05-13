@@ -15,14 +15,11 @@ RSpec.describe Services::HourlyService, type: :model do
     expect(response).to be_a Hash
   end
 
-  it 'returns a forecast with hourly data' do
+  it 'returns a forecast with hourly data for 156 hours' do
     response = VCR.use_cassette('hourly_service') do
       service.run
     end
 
-    expect(response['properties']['periods']).to be_a Array
+    expect(response['properties']['periods'].count).to eql 156
   end
-
-
-
 end

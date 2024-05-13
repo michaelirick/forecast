@@ -24,4 +24,4 @@ RUN bin/webpack
 
 # Start server
 # CMD rails server -b 0.0.0.0
-# CMD foreman start -f Procfile.dev
+CMD foreman start -f Procfile.dev
